@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Source_Sans_Pro } from 'next/font/google'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useState } from 'react'
 import {FiSearch} from 'react-icons/fi'
 
@@ -18,6 +19,7 @@ const Header = () => {
     }
     return (
         <header>
+            <Link href='/'>
             <span>
                 <Image src='/img/sun rain.png'
                     alt="Picture of the author"
@@ -25,6 +27,7 @@ const Header = () => {
                     height={60} />
                 <h1 className={source_sans_pro.className}>WeatherTracker</h1>
             </span>
+            </Link>
             <form onSubmit={formHandler}>
                 <input type='text' onChange={e => setLinkTo(e.target.value)} placeholder='Search for a city'/>
                 <button type='submit'>{<FiSearch size={22}/>}</button>
