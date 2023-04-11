@@ -14,7 +14,7 @@ const CityPage = () => {
         <title>{name} weather</title>
         <meta name="description" content={`${name} real time weather`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/img/favicon.png" />
       </Head>
     <main className={notoSans.className}>{name}</main>
     </>
