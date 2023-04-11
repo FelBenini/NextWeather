@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useContext } from 'react'
 import { CityContext } from '@/components/userCity'
-import { LoadingContext } from '@/components/loadingContext'
 import CityInfoSection from '@/components/CityInfoSection'
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
         <link rel="icon" href="/img/favicon.png" />
       </Head>
       <main>
-        {city}
         <CityInfoSection cityName={city}/>
       </main>
     </>
