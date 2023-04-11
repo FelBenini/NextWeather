@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useState } from 'react'
 import {FiSearch} from 'react-icons/fi'
+import { Button, TextField } from '@mui/material'
 
 const source_sans_pro = Source_Sans_Pro({ subsets: ['latin'], weight: '600' })
 
@@ -16,11 +17,12 @@ const Header = () => {
         if (linkTo !== '') {
            router.push(`/city/${linkTo}`) 
         }
+        setLinkTo('')
     }
     return (
         <header>
             <Link href='/'>
-            <span>
+            <span className='container'>
                 <Image src='/img/sun rain.png'
                     alt="Picture of the author"
                     width={60}
@@ -29,8 +31,8 @@ const Header = () => {
             </span>
             </Link>
             <form onSubmit={formHandler}>
-                <input type='text' onChange={e => setLinkTo(e.target.value)} placeholder='Search for a city'/>
-                <button type='submit'>{<FiSearch size={22}/>}</button>
+                <TextField sx={{height: '40px'}} type='text' value={linkTo} onChange={e => setLinkTo(e.target.value)} label='Search for a city'/>
+                <Button variant='contained' sx={{height: '56px', marginLeft: '2px', width: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '6px'}} type='submit'>{<FiSearch size={22}/>}</Button>
             </form>
         </header>
     )

@@ -11,7 +11,7 @@ header {
     & a {
       text-decoration: none;
     }
-    & span {
+    & .container {
       display: flex;
       height: 60px;
       align-items: center;
@@ -23,34 +23,10 @@ header {
     & form {
       height: 40px;
       display: flex;
-      align-items: center;
+      justify-content: center;
       border-radius: 16px;
       width: fit-content;
-      & input {
-        height: 18px;
-        padding: 8px 16px;
-        border-radius: 8px 4px 4px 8px;
-        background-color: #323638;
-        outline: none;
-        border: 1px solid #ffffff48;
-        margin-right: 4px;
-      }
-      & button {
-        height: 35px;
-        width: 35px;
-        border-radius: 4px 8px 8px 4px;
-        background-color: #4589ce;
-        border: none;
-        padding-right: 7px;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: ease 0.3s;
-        &:hover {
-          background-color: #317bc5;
-        }
+      margin-bottom: 16px;
       }
     }
-  }
   

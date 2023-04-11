@@ -31,3 +31,21 @@ html {
   border-radius: 60px;
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.384);
 }
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  height: 76vh;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  & h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  & p {
+    margin-top: 8px;
+    font-size: 15px;
+    opacity: 0.8;
+  }
+}
