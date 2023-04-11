@@ -32,7 +32,7 @@ const Header = () => {
             </Link>
             <form onSubmit={formHandler}>
                 <TextField sx={{height: '40px'}} type='text' value={linkTo} onChange={e => setLinkTo(e.target.value)} label='Search for a city'/>
-                <Button variant='contained' sx={{height: '56px', marginLeft: '2px', width: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '6px'}} type='submit'>{<FiSearch size={22}/>}</Button>
+                <Button variant='contained' sx={{height: '56px', marginLeft: '4px', minWidth: '44px', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '6px'}} type='submit'>{<FiSearch size={22}/>}</Button>
             </form>
         </header>
     )

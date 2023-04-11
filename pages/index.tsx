@@ -1,22 +1,11 @@
 import Head from 'next/head'
-import { useState, useContext } from 'react'
-import LoadingArea from '@/components/loadingArea'
+import { useContext } from 'react'
 import { CityContext } from '@/components/userCity'
+import { LoadingContext } from '@/components/loadingContext'
+import CityInfoSection from '@/components/CityInfoSection'
 
 export default function Home() {
-  const {city} = useContext(CityContext)
-  const [loading, setLoading] = useState(true)
-  const Loader = () => {
-    if (loading) {
-      return (
-        <LoadingArea/>
-      )
-    } else {
-      return (
-        <></>
-      )
-    }
-  }
+  const { city } = useContext(CityContext)
   return (
     <>
       <Head>
@@ -27,7 +16,7 @@ export default function Home() {
       </Head>
       <main>
         {city}
-        <Loader/>
+        <CityInfoSection cityName={city}/>
       </main>
     </>
   )
