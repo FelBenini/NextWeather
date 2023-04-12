@@ -21,5 +21,5 @@ export default async function handler(
        res.status(200).json({data: info.data, status: info.status, bgImg: img.data.photos[0].src.large2x})
     } catch (err) {
       res.status(404).json({data: 'City not found', status: 404})  
-    }//trying again
+    }
 }
