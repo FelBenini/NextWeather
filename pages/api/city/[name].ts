@@ -22,5 +22,4 @@ export default async function handler(
     } catch (err) {
       res.status(404).json({data: 'City not found', status: 404})  
     }
-    //commit
 }
