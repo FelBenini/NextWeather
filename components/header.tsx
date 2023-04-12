@@ -25,8 +25,8 @@ const Header = () => {
             <span className='container'>
                 <Image src='/img/sun rain.png'
                     alt="Picture of the author"
-                    width={60}
-                    height={60} />
+                    width={64}
+                    height={61} />
                 <h1 className={source_sans_pro.className}>WeatherTracker</h1>
             </span>
             </Link>
