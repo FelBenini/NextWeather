@@ -8,6 +8,9 @@ header {
     align-items: center;
     justify-content: space-between;
     outline: #7e83a996 1px solid;
+    position: fixed;
+    z-index: 99;
+    box-shadow: 0px 8px 16px #09090a3f;
     & a {
       text-decoration: none;
     }
