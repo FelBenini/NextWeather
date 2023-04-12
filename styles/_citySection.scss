@@ -8,26 +8,38 @@
     padding-top: 24px;
     z-index: 80;
     text-shadow: 0px 2px 2px #0000009a;
+
     & h1 {
         font-size: 56px;
         text-shadow: 0px 4px 4px #00000050;
         display: flex;
         flex-direction: column;
         align-items: center;
+
         & h4 {
             font-size: 20px;
         }
     }
+
     & .currentWeather {
         display: flex;
         width: 250px;
         justify-content: space-between;
         margin-top: -40px;
+
         & h2 {
             background-color: #1b2333cc;
             padding: 12px;
             border-radius: 4px;
             border: 1px solid #ffffff93;
+            position: relative;
+
+            & img {
+                position: absolute;
+                top: -37%;
+                left: 82%;
+                width: 42px;
+            }
         }
     }
 }
