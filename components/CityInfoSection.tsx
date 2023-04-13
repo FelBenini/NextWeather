@@ -23,7 +23,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
 
             const fetchAgain = setTimeout(() => {
                 fetchData(cityName)
-            }, 60000);
+            }, 300000);
             return () => clearTimeout(fetchAgain);
         } else {
         }
@@ -40,10 +40,10 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
                     <h1 className={source_sans_pro.className}>{info.data.location.name}
                         <h4>{info.data.location.country}</h4>
                     </h1>
-                    <h3 className={notoSans.className}>Real time Weather</h3>
+                    <h3 className={notoSans.className}>Real time Weather - {info.data.current.condition.text}</h3>
                     <span className={`currentWeather`}>
-                        <h2 className={notoSans.className}>{info.data.current.temp_c}º C<img src={info.data.current.condition.icon} /></h2>
-                        <h2 className={notoSans.className}>{info.data.current.temp_f}º F<img src={info.data.current.condition.icon} /></h2>
+                        <h2 className={notoSans.className}>{info.data.current.temp_c}º C<Image src={'https:'+info.data.current.condition.icon} alt={info.data.current.condition.text} width={42} height={42}/></h2>
+                        <h2 className={notoSans.className}>{info.data.current.temp_f}º F<Image src={'https:'+info.data.current.condition.icon} width={42} alt={info.data.current.condition.text} height={42}/></h2>
                     </span>
                 </section>
             </>

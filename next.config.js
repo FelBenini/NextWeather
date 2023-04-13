@@ -2,8 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['https://images.pexels.com']
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.weatherapi.com',
+        port: '',
+        pathname: '/weather/**'
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig
