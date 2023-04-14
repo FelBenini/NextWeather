@@ -5,6 +5,7 @@ import LoadingArea from './loadingArea'
 import { Source_Sans_Pro } from 'next/font/google'
 import { Noto_Sans } from 'next/font/google'
 import Image from 'next/image'
+import ForecastSection from './ForecastSection'
 import { CityContext } from './userCity'
 
 const notoSans = Noto_Sans({ subsets: ['latin'], weight: '400' })
@@ -30,6 +31,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
     }
 
     useEffect(() => {
+        setLoading(true)
         fetchData(cityName)
     }, [city, cityName])
 
@@ -46,6 +48,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
                         <h2 className={notoSans.className}>{info.data.current.temp_f}º F<Image src={'https:'+info.data.current.condition.icon} width={42} alt={info.data.current.condition.text} height={42}/></h2>
                     </span>
                 </section>
+                <ForecastSection cityName={cityName} />
             </>
         )
     } else {
