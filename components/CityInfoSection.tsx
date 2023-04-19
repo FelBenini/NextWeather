@@ -33,7 +33,6 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
             }, 300000);
             return () => clearTimeout(fetchAgain);
         } else {
-            setStatus(404)
         }
     }
 
@@ -61,7 +60,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
     } else if (status === 404) {
         return (
             <section id='citySection'>
-                <h1 className={source_sans_pro.className}>404<br/><h6 className={notoSans.className}>Page not found</h6></h1>
+                <h1 className={source_sans_pro.className}>404<br/><h6 className={notoSans.className}>City not found</h6></h1>
             </section>
         )
     } else {
