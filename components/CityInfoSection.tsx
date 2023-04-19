@@ -15,11 +15,17 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
     const { loading, setLoading } = useContext(LoadingContext)
     const [info, setInfo] = useState(null) as any
     const { city } = useContext(CityContext)
+    const [status, setStatus] = useState<Number>()
 
     const fetchData = async (cityName: string | undefined | string[]) => {
         if (cityName !== '' && cityName !== undefined) {
-            const { data } = await axios.get(`/api/city/${cityName}`)
-            setInfo(data)
+            try {
+                const response = await axios.get(`/api/city/${cityName}`)
+                setInfo(response.data)
+                setStatus(response.status)
+            } catch (error) {
+                setStatus(404)
+            }
             setLoading(false)
 
             const fetchAgain = setTimeout(() => {
@@ -27,6 +33,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
             }, 300000);
             return () => clearTimeout(fetchAgain);
         } else {
+            setStatus(404)
         }
     }
 
@@ -44,12 +51,18 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
                     </h1>
                     <h3 className={notoSans.className}>Real time Weather - {info.data.current.condition.text}</h3>
                     <span className={`currentWeather`}>
-                        <h2 className={notoSans.className}>{info.data.current.temp_c}º C<Image src={'https:'+info.data.current.condition.icon} alt={info.data.current.condition.text} width={42} height={42}/></h2>
-                        <h2 className={notoSans.className}>{info.data.current.temp_f}º F<Image src={'https:'+info.data.current.condition.icon} width={42} alt={info.data.current.condition.text} height={42}/></h2>
+                        <h2 className={notoSans.className}>{info.data.current.temp_c}º C<Image src={'https:' + info.data.current.condition.icon} alt={info.data.current.condition.text} width={42} height={42} /></h2>
+                        <h2 className={notoSans.className}>{info.data.current.temp_f}º F<Image src={'https:' + info.data.current.condition.icon} width={42} alt={info.data.current.condition.text} height={42} /></h2>
                     </span>
                 </section>
                 <ForecastSection cityName={cityName} />
             </>
+        )
+    } else if (status === 404) {
+        return (
+            <section id='citySection'>
+                <h1 className={source_sans_pro.className}>404<br/><h6 className={notoSans.className}>Page not found</h6></h1>
+            </section>
         )
     } else {
         return (
