@@ -15,16 +15,16 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
     const { loading, setLoading } = useContext(LoadingContext)
     const [info, setInfo] = useState(null) as any
     const { city } = useContext(CityContext)
-    const [status, setStatus] = useState<Number>()
+    const [notFound, setNotFound] = useState<Boolean | undefined>(false)
 
     const fetchData = async (cityName: string | undefined | string[]) => {
         if (cityName !== '' && cityName !== undefined) {
             try {
                 const response = await axios.get(`/api/city/${cityName}`)
                 setInfo(response.data)
-                setStatus(response.status)
+                setNotFound(false)
             } catch (error) {
-                setStatus(404)
+                setNotFound(true)
             }
             setLoading(false)
 
@@ -37,11 +37,12 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
     }
 
     useEffect(() => {
+        setNotFound(undefined)
         setLoading(true)
         fetchData(cityName)
     }, [city, cityName])
 
-    if (info !== null && !loading) {
+    if (info !== null && !loading && !notFound) {
         return (
             <>
                 <section id='citySection' style={{ backgroundImage: `linear-gradient(to top, #151617, #22242590, #22242580) ,url(${info.bgImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -57,7 +58,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
                 <ForecastSection cityName={cityName} />
             </>
         )
-    } else if (status === 404) {
+    } else if (notFound) {
         return (
             <section id='citySection'>
                 <h1 className={source_sans_pro.className}>404<br/><h6 className={notoSans.className}>City not found</h6></h1>
@@ -68,7 +69,6 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
             <LoadingArea />
         )
     }
-
 }
 
 export default CityInfoSection
