@@ -8,9 +8,13 @@ import { Source_Sans_Pro } from 'next/font/google'
 const notoSans = Noto_Sans({ subsets: ['latin'], weight: '400' })
 const source_sans_pro = Source_Sans_Pro({ subsets: ['latin'], weight: '600' })
 
+interface Data {
+    data: Array<any>
+}
+
 const ForecastSection = ({ cityName }: { cityName: string | undefined | string[] }) => {
     const { city } = useContext(CityContext)
-    const [info, setInfo] = useState(null) as any
+    const [info, setInfo] = useState<null | Data>(null)
     const fetchData = async () => {
         const { data } = await axios.get(`/api/city/forecast/${cityName}`)
         setInfo(data)

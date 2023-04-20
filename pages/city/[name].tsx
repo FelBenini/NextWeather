@@ -2,12 +2,9 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import CityInfoSection from "@/components/CityInfoSection";
-import { LoadingContext } from "@/components/loadingContext";
-import LoadingArea from "@/components/loadingArea";
 
 const CityPage = () => {
   const router = useRouter();
-  const { loading } = useContext(LoadingContext);
   const name = router.query.name;
   return (
     <>

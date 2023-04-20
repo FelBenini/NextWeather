@@ -11,9 +11,15 @@ import { CityContext } from './userCity'
 const notoSans = Noto_Sans({ subsets: ['latin'], weight: '400' })
 const source_sans_pro = Source_Sans_Pro({ subsets: ['latin'], weight: '600' })
 
+interface Data {
+    data: {location: any,
+    current: any},
+    bgImg: string
+}
+
 const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[] }) => {
     const { loading, setLoading } = useContext(LoadingContext)
-    const [info, setInfo] = useState(null) as any
+    const [info, setInfo] = useState<null | Data>(null)
     const { city } = useContext(CityContext)
     const [notFound, setNotFound] = useState<Boolean | undefined>(false)
 
