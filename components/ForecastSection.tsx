@@ -24,7 +24,25 @@ const ForecastSection = ({ cityName }: { cityName: string | undefined | string[]
         const mappedInfo = info.data.map((element: any, index: any) => {
             return (
                 <div className='dayCard dayCardReady' key={index}>
-                    <p>{element.date.replaceAll('-', '/')}</p>
+                    <h4>{element.date.replaceAll('-', '/')} <img src={element.day.condition.icon}/><h5 className={notoSans.className}> - {element.day.condition.text}</h5></h4>
+                    <div>
+                    <span>
+                        <h5>Min temp</h5>
+                            <p className={notoSans.className}>{element.day.mintemp_c}º C</p>
+                        </span>
+                        <span>
+                            <h5>Max temp</h5>
+                            <p className={notoSans.className}>{element.day.maxtemp_c}º C</p>
+                        </span>
+                        <span>
+                            <h5>Chance of raining</h5>
+                            <p className={notoSans.className}>{element.day.daily_chance_of_rain}%</p>
+                        </span>
+                        <span>
+                            <h5>Humidity</h5>
+                            <p className={notoSans.className}>{element.day.avghumidity}%</p>
+                        </span>
+                    </div>
                 </div>
             )
         })

@@ -70,15 +70,34 @@
 
         & .dayCard {
             width: 90%;
-            text-align: center;
-            height: 64px;
+            height: 72px;
             margin: 16px 0px 0px 0px;
-            padding: 12px 8px;
+            padding: 12px 16px;
         }
         & .dayCardReady {
             background: linear-gradient(to top left, #164a7e, #4673a1);
             border-radius: 12px;
+            display: flex;
+            flex-direction: column;
             border: #7ca0c4 2px solid;
+            justify-content: space-between;
+            & h4 {
+                align-self: flex-start;
+                display: flex;
+                & img {
+                    width: 32px;
+                    margin-top: -6px;
+                    margin-left: 8px;
+                }
+                & h5 {
+                    font-size: 14px;
+                    margin-left: 8px;
+                }
+            }
+            & div {
+                display: flex;
+                justify-content: space-between;
+            }
         }
     }
 }

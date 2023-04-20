@@ -62,6 +62,7 @@ const CityInfoSection = ({ cityName }: { cityName: string | undefined | string[]
         return (
             <section id='citySection'>
                 <h1 className={source_sans_pro.className}>404<br/><h6 className={notoSans.className}>City not found</h6></h1>
+                <h3 className={notoSans.className}>There were no results for &apos;{cityName}&apos;</h3>
             </section>
         )
     } else {
