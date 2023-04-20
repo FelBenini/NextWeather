@@ -4,6 +4,7 @@ import Header from '@/components/header'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CityProvider } from '@/components/userCity';
 import { LoadingProvider } from '@/components/loadingContext';
+import Footer from '@/components/footer';
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <Header />
             <Component {...pageProps} />
+            <Footer />
           </ThemeProvider>
         </CityProvider>
       </LoadingProvider>
