@@ -12,6 +12,14 @@ interface Data {
     data: Array<any>
 }
 
+function epochToDate(epoch: number) {
+    const dateObj = new Date(epoch * 1000);
+    const day = dateObj.getDate().toString().padStart(2, '0');
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+    const year = dateObj.getFullYear().toString();
+    return `${day}/${month}/${year}`;
+  }
+
 const ForecastSection = ({ cityName }: { cityName: string | undefined | string[] }) => {
     const { city } = useContext(CityContext)
     const [info, setInfo] = useState<null | Data>(null)
@@ -28,7 +36,7 @@ const ForecastSection = ({ cityName }: { cityName: string | undefined | string[]
         const mappedInfo = info.data.map((element: any, index: any) => {
             return (
                 <div className='dayCard dayCardReady' key={index}>
-                    <h4>{element.date.replaceAll('-', '/')} <img src={element.day.condition.icon}/><h5 className={notoSans.className}> - {element.day.condition.text}</h5></h4>
+                    <h4>{epochToDate(element.date_epoch)} <img src={element.day.condition.icon}/><h5 className={notoSans.className}> - {element.day.condition.text}</h5></h4>
                     <div>
                     <span>
                         <h5>Min temp</h5>
